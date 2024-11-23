@@ -92,7 +92,7 @@ data:
 
     }
 ---
-apiVersion: v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
@@ -131,13 +131,13 @@ spec:
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
               readOnly: true
-      volumes: 
+      volumes:
       - name: nginx-conf
         configMap:
-        name: frontend
-        items:
-          - key: nginx.conf
-            path: nginx.conf
+          name: frontend
+          items:
+            - key: nginx.conf
+              path: nginx.conf
 ---
 apiVersion: v1
 kind: Service
